@@ -7,22 +7,6 @@ import Diagrams.Prelude
 import Diagrams.TwoD.Layout.Tree
 import Visualization.BackEnd
 
--- drawCompute :: (r -> Diagram BackEnd) -> Computation r -> Diagram BackEnd
--- drawCompute drawVal (Computation t) =
---     treeDiagram id $ prepareHoleTree (drawOperation drawVal) t
-
--- drawOperation :: (r -> Diagram BackEnd) -> Operation r -> Diagram BackEnd
--- drawOperation drawVal = \case
---     IdOp -> drawText "Id" -- circle 0.1 # fillColor green
---     Op x -> drawVal x
-
--- prepareHoleTree :: (a -> Diagram BackEnd) -> HoleTree' a Activation -> Tree (Diagram BackEnd)
--- prepareHoleTree drawVal = cata $ \case
---     Hole'F act -> Node (drawPretty act) []
---     HoleTree'F x ts -> Node (drawVal x) ts
-
--- drawHoleTree :: HoleTree' a Activation -> Diagram BackEnd
--- drawHoleTree = renderTree undefined symmLayout
 
 treeDiagram :: (a -> Diagram BackEnd) -> Tree a -> Diagram BackEnd
 treeDiagram drawNode t =

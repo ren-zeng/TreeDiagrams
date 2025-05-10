@@ -1,2 +1,12 @@
+import ProofTreeVisTest
+import TreeVisTest
+
+
 main :: IO ()
-main = putStrLn "Test suite not yet implemented"
+main = do 
+    plotTestProofTree "test/TestSVGs/ProofTreeExample.svg"
+    plotTestTree "test/TestSVGs/TestTreeExample.svg" 
+
+
+
+

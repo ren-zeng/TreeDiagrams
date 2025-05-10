@@ -1,20 +1,11 @@
-module Visualization.ProofTree where
-import Visualization.BackEnd
-import Core.ProofTree
-import Diagrams
-import Data.Functor.Foldable
-import Visualization.Text
-import Diagrams.Prelude
+module Visualization.ProofTree (drawProofTree) where
 
-drawProofTreeDefault :: (_) => (v -> Diagram BackEnd) -> ProofTree a (w, v) -> Diagram BackEnd
-drawProofTreeDefault drawV weightProofTree =
-    drawProofTree
-        drawPretty
-        (\(w, item) -> hsep 0 [drawText (show w) <> circle 1 # lwL 0.1, drawText ":", drawV item] # centerX)
-        weightProofTree
-        # frame 1
-        # bg white
-        
+import Core.ProofTree
+import Data.Functor.Foldable
+import Diagrams
+import Diagrams.Prelude
+import Visualization.BackEnd
+
 drawProofTree :: (a -> Diagram BackEnd) -> (v -> Diagram BackEnd) -> ProofTree a v -> Diagram BackEnd
 drawProofTree drawRule drawStatement =
     cata $
@@ -26,7 +17,6 @@ drawProofTree drawRule drawStatement =
                 top = drawStatement v
                 bot = centerX diagramPremises
                 diagramPremises = hsep 1 rs
-            
 
 ruleSep :: Diagram BackEnd -> Diagram BackEnd -> Diagram BackEnd -> Diagram BackEnd
 ruleSep rulebox top bot =

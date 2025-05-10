@@ -2,7 +2,7 @@ module Visualization.Text where
 
 import Diagrams
 import Diagrams.Prelude
-import Prettyprinter
+import Prettyprinter hiding (vsep)
 import Visualization.BackEnd
 
 drawText :: String -> Diagram BackEnd
@@ -20,3 +20,6 @@ coloredText c x =
     text x # fontSizeL 1 # fc c
         <> (rect (fromIntegral (length x) / 2) 1 :: Diagram BackEnd)
             # phantom
+
+withTitle :: String -> Diagram BackEnd -> Diagram BackEnd
+withTitle title = centerXY . (\x -> vsep 5 [text title # fontSize 20 , x])

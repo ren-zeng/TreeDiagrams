@@ -5,7 +5,7 @@ import Diagrams
 import Visualization.BackEnd
 import Visualization.Tree
 
-drawSymbolTree :: _ =>
+drawSymbolTree ::
     (Symbol nt t -> Diagram BackEnd) ->
     SymbolTree nt t ->
     Diagram BackEnd
