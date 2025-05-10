@@ -25,9 +25,16 @@ source-repository head
 
 library
   exposed-modules:
+      Core.ParseTree
+      Core.ProofTree
+      Core.SymbolTree
       Lib
-      Symbol
-      Trees
+      Visualization.BackEnd
+      Visualization.ParseTree
+      Visualization.ProofTree
+      Visualization.SymbolTree
+      Visualization.Text
+      Visualization.Tree
   other-modules:
       Paths_TreeDiagrams
   autogen-modules:
