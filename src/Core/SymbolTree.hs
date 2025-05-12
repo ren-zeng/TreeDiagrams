@@ -3,13 +3,17 @@ import Prettyprinter
 import Data.Functor.Foldable.TH
 import Data.Tree
 import Data.Functor.Foldable
+import GHC.Generics (Generic)
+import Data.Aeson
 
 {- | @Symbol nt t@ is the symbol type for a grammar. 
 - @nt@ the non-terminal type 
 - @t@ the terminal type
 -}
 data Symbol nt t = T t | NT nt
-    deriving (Show, Eq, Ord)
+    deriving (Show, Eq, Ord, Generic)
+
+
 
 instance (Pretty a, Pretty t) => Pretty (Symbol a t) where
     pretty = \case
@@ -24,8 +28,11 @@ data StartSymbol = StartSymbol
 - @t@ leaf label type (temrinal)
 -}
 data SymbolTree nt t = TLeaf t | NTNode nt [SymbolTree nt t]
-    deriving Show
+    deriving (Show,Generic,Eq)
 makeBaseFunctor ''SymbolTree
+
+instance (ToJSON nt, ToJSON t) => ToJSON (SymbolTree  nt t)
+instance (FromJSON nt, FromJSON t) => FromJSON (SymbolTree  nt t)
 
 rootNT :: SymbolTree a t -> Maybe a
 rootNT (NTNode nt ts) = Just nt 

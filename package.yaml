@@ -28,6 +28,7 @@ dependencies:
 - prettyprinter
 - recursion-schemes
 - containers
+- aeson
 
 ghc-options:
 - -Wall
