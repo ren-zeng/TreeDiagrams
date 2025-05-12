@@ -7,7 +7,7 @@ import Diagrams.Backend.SVG
 import Diagrams.Prelude
 import TestExample
 import Visualization.ProofTree
-import Visualization.Text
+import Visualization.Text (withTitle,drawText)
 
 fibProofTree :: Nat -> ProofTree String String
 fibProofTree = ana $ \case

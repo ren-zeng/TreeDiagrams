@@ -1,6 +1,6 @@
 module TreeVisTest(plotTestTree) where
 import TestExample
-import Data.Tree
+import Data.Tree ( Tree )
 import Data.Functor.Base
 import Data.Functor.Foldable
 import Visualization.Tree

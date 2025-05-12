@@ -1,4 +1,4 @@
-module Visualization.Text where
+module Visualization.Text (drawText,withTitle) where
 
 import Diagrams
 import Diagrams.Prelude
