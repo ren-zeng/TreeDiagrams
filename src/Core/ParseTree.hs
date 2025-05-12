@@ -13,3 +13,13 @@ parseTreeToProofTree  = cata $ \case
     LeafF t -> Axiom (T t) 
     ParseTreeF nt r ts -> ProofTree (NT nt) r ts
   
+inferParseTree ::
+    (nt -> [Symbol nt t] -> Maybe r) ->
+    SymbolTree nt t ->
+    Maybe (ParseTree r nt t)
+inferParseTree inferRule = \case
+    NTNode nt ts -> do
+        r <- inferRule nt (rootSymbol <$> ts)
+        ts' <- mapM (inferParseTree inferRule) ts
+        return $ ParseTree nt r ts'
+    TLeaf t -> return $ Leaf t

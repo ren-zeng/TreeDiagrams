@@ -2,6 +2,7 @@ module Core.ProofTree where
 import Data.Functor.Foldable.TH
 import Prettyprinter
 import Data.Functor.Foldable
+import Core.SymbolTree
 
 {- | @ProofTree r a@ encodes the structure of a proof
 - @r@: inference rule
@@ -24,3 +25,4 @@ instance (Pretty a, Pretty v) => Pretty (ProofTree a v) where
 proofGoal :: ProofTree r a -> a
 proofGoal (Axiom x) = x 
 proofGoal (ProofTree x _ _) = x
+

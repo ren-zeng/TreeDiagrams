@@ -36,3 +36,8 @@ symbolTreetoTree = cata $ \case
     TLeafF t -> Node (T t) [] 
     NTNodeF nt ts -> Node (NT nt) ts
 
+rootSymbol :: SymbolTree nt t -> Symbol nt t
+rootSymbol (TLeaf x) = T x
+rootSymbol (NTNode x _) = NT x
+
+
