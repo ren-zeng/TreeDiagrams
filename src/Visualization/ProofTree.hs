@@ -29,5 +29,5 @@ ruleSep rulebox top bot =
 
 drawBoxAround :: Diagram BackEnd -> Diagram BackEnd
 drawBoxAround x =
-    x
-        <> (rect (width x) (height x) # bg white) # lwL 0.1 # lc grey # frame 1 # pad 1.1
+    (x
+        <> (rect (width x) (height x) # bg white)) # lwL 0.1 # lc grey # frame 1 # pad 1.1
