@@ -29,6 +29,7 @@ dependencies:
 - recursion-schemes
 - containers
 - aeson
+- directory
 
 ghc-options:
 - -Wall
