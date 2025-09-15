@@ -1,10 +1,11 @@
 module Core.ProofTree where
-import Data.Functor.Foldable.TH
-import Prettyprinter
-import Data.Functor.Foldable
+
 import Core.SymbolTree
-import GHC.Generics
 import Data.Aeson
+import Data.Functor.Foldable
+import Data.Functor.Foldable.TH
+import GHC.Generics
+import Prettyprinter
 
 {- | @ProofTree r a@ encodes the structure of a proof
 - @r@: inference rule
@@ -28,6 +29,12 @@ instance (Pretty a, Pretty v) => Pretty (ProofTree a v) where
         ]
 
 proofGoal :: ProofTree r a -> a
-proofGoal (Axiom x) = x 
+proofGoal (Axiom x) = x
 proofGoal (ProofTree x _ _) = x
 
+testJSON :: IO ()
+testJSON =
+  encodeFile @(ProofTree String String) "exampleProofTree.json" $
+    ProofTree "Conclusion" "theorem" [ProofTree "premise 1" "lemma" [Axiom "premise 1.1"], Axiom "premise 2"]
+
+-- >>>  testJSON

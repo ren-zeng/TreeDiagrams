@@ -71,8 +71,10 @@ library
     , diagrams-lib
     , diagrams-svg
     , directory
+    , mtl
     , prettyprinter
     , recursion-schemes
+    , transformers
   default-language: Haskell2010
 
 executable TreeDiagrams-exe
@@ -113,8 +115,10 @@ executable TreeDiagrams-exe
     , diagrams-lib
     , diagrams-svg
     , directory
+    , mtl
     , prettyprinter
     , recursion-schemes
+    , transformers
   default-language: Haskell2010
 
 test-suite TreeDiagrams-test
@@ -159,6 +163,8 @@ test-suite TreeDiagrams-test
     , diagrams-lib
     , diagrams-svg
     , directory
+    , mtl
     , prettyprinter
     , recursion-schemes
+    , transformers
   default-language: Haskell2010
