@@ -6,12 +6,33 @@ cabal-version: 2.2
 
 name:           TreeDiagrams
 version:        0.1.0.0
-description:    Please see the README on GitHub at <https://github.com/githubuser/TreeDiagrams#readme>
-homepage:       https://github.com/githubuser/TreeDiagrams#readme
-bug-reports:    https://github.com/githubuser/TreeDiagrams/issues
-author:         Author name here
+synopsis: A minimal library for visualizing trees as SVGs.
+description:    
+    This is a minimal library for visualizing trees as SVG.
+    .
+    It provides two kinds of tree visualization 
+    .
+    1. "normal" tree diagrams
+        - `data Tree a = Node a [Tree a]`
+        - `data SymbolTree nt t = TLeaf t | NTNode nt [SymbolTree nt t]`
+    .
+    <<https://raw.githubusercontent.com/ren-zeng/TreeDiagrams/bc6a9ce7f7fd738d18518dcdd7aec6f22f9d0e48/test/TestSVGs/TestTreeExample.svg>>
+    .
+    2. "proof tree" 
+        - `data ProofTree r a = Axiom a | ProofTree a r [ProofTree r a]`
+    .
+    <<https://raw.githubusercontent.com/ren-zeng/TreeDiagrams/bc6a9ce7f7fd738d18518dcdd7aec6f22f9d0e48/test/TestSVGs/ProofTreeExample.svg>>
+    .
+
+
+
+    Please see the README on GitHub at <https://github.com/ren-zeng/TreeDiagrams#readme>
+stability: experimental
+homepage:       https://github.com/ren-zeng/TreeDiagrams#readme
+bug-reports:    https://github.com/ren-zeng/TreeDiagrams/issues
+author:         Zeng Ren
 maintainer:     example@example.com
-copyright:      2025 Author name here
+copyright:      2025 Zeng Ren
 license:        BSD-3-Clause
 license-file:   LICENSE
 build-type:     Simple
@@ -21,17 +42,14 @@ extra-source-files:
 
 source-repository head
   type: git
-  location: https://github.com/githubuser/TreeDiagrams
+  location: https://github.com/ren-zeng/TreeDiagrams
 
 library
   exposed-modules:
       Core.ParseTree
       Core.ProofTree
       Core.SymbolTree
-      Lib
-      Main
       Visualization.BackEnd
-      Visualization.ParseTree
       Visualization.ProofTree
       Visualization.SymbolTree
       Visualization.Text

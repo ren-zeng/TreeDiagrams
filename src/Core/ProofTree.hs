@@ -1,6 +1,14 @@
-module Core.ProofTree where
+module Core.ProofTree (
+  -- * Type
+  ProofTree (..),
 
-import Core.SymbolTree
+  -- * Query
+  proofGoal,
+
+  -- * (For fold/unfold) Base functor from recursion scheme
+  ProofTreeF (..),
+) where
+
 import Data.Aeson
 import Data.Functor.Foldable
 import Data.Functor.Foldable.TH
@@ -14,6 +22,10 @@ import Prettyprinter
 data ProofTree r a = Axiom a | ProofTree a r [ProofTree r a]
   deriving (Show, Generic)
 
+{- | Base functor for ProofTree
+
+  @Fix (ProofTreeF r a) ≃ ProofTree r a@
+-}
 makeBaseFunctor ''ProofTree
 
 instance (ToJSON r, ToJSON a) => ToJSON (ProofTree r a)
@@ -28,6 +40,7 @@ instance (Pretty a, Pretty v) => Pretty (ProofTree a v) where
         , indent 4 $ vsep ts
         ]
 
+-- | Root of ProofTree
 proofGoal :: ProofTree r a -> a
 proofGoal (Axiom x) = x
 proofGoal (ProofTree x _ _) = x
