@@ -97,10 +97,6 @@ library
 
 executable TreeDiagrams-exe
   main-is: Main.hs
-  other-modules:
-      Paths_TreeDiagrams
-  autogen-modules:
-      Paths_TreeDiagrams
   hs-source-dirs:
       app
   default-extensions:

@@ -18,8 +18,8 @@ version :: Version
 version = Version [0,1,0,0] []
 
 synopsis :: String
-synopsis = ""
+synopsis = "A minimal library for visualizing trees as SVGs."
 copyright :: String
-copyright = "2025 Author name here"
+copyright = "2025 Zeng Ren"
 homepage :: String
-homepage = "https://github.com/githubuser/TreeDiagrams#readme"
+homepage = "https://github.com/ren-zeng/TreeDiagrams#readme"

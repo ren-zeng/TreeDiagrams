@@ -1,5 +1,10 @@
-module Visualization.BackEnd (BackEnd) where
+module Visualization.BackEnd (
+    BackEnd,
+    renderSVG,
+    ) where
 
-import Diagrams.Backend.SVG (B)
+import Diagrams.Backend.SVG (B, renderSVG)
+
 
 type BackEnd = B
+
